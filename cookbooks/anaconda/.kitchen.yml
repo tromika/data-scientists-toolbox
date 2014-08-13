@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  # it would be nice if this supported multiple provisioners (ordered) like vagrant does...
+  #name: shell
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: ubuntu-12.10
+  - name: ubuntu-13.04
+  - name: ubuntu-13.10
+
+suites:
+  - name: default
+    run_list:
+      - recipe[anaconda::default]
+    attributes:
+      anaconda:
+        flavor: 'x86_64'
+        accept_license: 'yes'
