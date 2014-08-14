@@ -116,7 +116,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #Lxde GUI for ubuntu
   config.vm.provision "shell", path: "shell_provisioning/install_Rstudio_desktop.sh"
   #Lxde GUI for ubuntu
-  #config.vm.provision "shell", path: "shell_provisioning/install_lxde.sh"
+  #config.vm.provision "shell", path: "shell_provisioning/install_LightDM.sh"
 
 
   # Enable provisioning with chef server, specifying the chef server URL,
