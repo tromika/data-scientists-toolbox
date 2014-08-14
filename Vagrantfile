@@ -92,9 +92,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      chef.cookbooks_path = "cookbooks"
      chef.add_recipe "apt"
      chef.add_recipe "git"
-     #chef.add_recipe "python"
      chef.add_recipe "anaconda"
      chef.add_recipe "r"
+     chef.add_recipe "java"
   #   chef.roles_path = "../my-recipes/roles"
   #   chef.data_bags_path = "../my-recipes/data_bags"
   #   chef.add_recipe "mysql"
@@ -105,16 +105,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         :anaconda => {
             :flavor => 'x86_64',
             :accept_license => 'yes',},
-#        :rstudio => {
-#            :install_method => 'package',},
-            }
+        :java => {
+            :install_flavor => 'oracle',
+            :jdk_version => '7',
+            :oracle => {
+              :accept_oracle_download_terms => true
+                },
+              },
+    }
   end
 
   #config.vm.provision "shell", path: "shell_provisioning/add_conda_to_path.sh"
 
 
   #Lxde GUI for ubuntu
-  config.vm.provision "shell", path: "shell_provisioning/install_Rstudio_desktop.sh"
+  #config.vm.provision "shell", path: "shell_provisioning/install_Rstudio_desktop.sh"
   #Lxde GUI for ubuntu
   #config.vm.provision "shell", path: "shell_provisioning/install_LightDM.sh"
 
