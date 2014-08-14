@@ -56,8 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
-  #config.vm.provision "shell", inline: "sudo apt-get update"
-  #config.vm.provision "shell", inline: "sudo apt-get -y install lxde"
+ 
 
   # Enable provisioning with CFEngine. CFEngine Community packages are
   # automatically installed. For example, configure the host as a
@@ -105,6 +104,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             :flavor => 'x86_64',
             :accept_license => 'yes',} }
   end
+
+  config.vm.provision "shell", path: "shell_provisioning/add_conda_to_path.sh"
+
+
+
+  #Lxde GUI for ubuntu
+  #config.vm.provision "shell", path: "shell_provisioning/install_lxde.sh"
+
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
