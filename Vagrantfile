@@ -83,7 +83,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   puppet.manifests_path = "manifests"
   #   puppet.manifest_file  = "site.pp"
   # end
+
+
   config.vm.provision "shell", inline: "sudo apt-get update"
+
+  config.vm.provision :file do |file|
+    file.source      = 'shell_provisioning/run.R'
+    file.destination = '/home/vagrant/run.R'
+  end
+
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
@@ -95,10 +103,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      chef.add_recipe "anaconda"
      chef.add_recipe "r"
      chef.add_recipe "java"
-  #   chef.roles_path = "../my-recipes/roles"
   #   chef.data_bags_path = "../my-recipes/data_bags"
   #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
   #
   #   # You may also specify custom JSON attributes:
      chef.json = { 
@@ -118,10 +124,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.provision "shell", path: "shell_provisioning/add_conda_to_path.sh"
 
 
-  #Lxde GUI for ubuntu
+  #RStudio Desktop
   #config.vm.provision "shell", path: "shell_provisioning/install_Rstudio_desktop.sh"
-  #Lxde GUI for ubuntu
+  #LightDM
   #config.vm.provision "shell", path: "shell_provisioning/install_LightDM.sh"
+  #Usefull R packages
+  config.vm.provision "shell", path: "shell_provisioning/R_packages.sh"
 
 
   # Enable provisioning with chef server, specifying the chef server URL,
