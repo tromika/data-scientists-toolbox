@@ -1,0 +1,36 @@
+{
+	"channels":
+	[
+		"https://sublime.wbond.net/channel.json"
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Cheat Sheets",
+		"DataConverter",
+		"Diffy",
+		"EncodingHelper",
+		"FileDiffs",
+		"GitGutter",
+		"Github Tools",
+		"GitStatus",
+		"Glue",
+		"JsFormat",
+		"JSONLint",
+		"MarkdownEditing",
+		"Package Syncing",
+		"Pretty JSON",
+		"Pylinter",
+		"R-Box",
+		"SerializedDataConverter",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeREPL",
+		"Table Editor"
+	],
+	"repositories":
+	[
+		"https://github.com/wuub/SublimeREPL",
+		"https://github.com/SublimeLinter/SublimeLinter"
+	]
+}

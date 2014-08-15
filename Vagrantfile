@@ -88,7 +88,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", inline: "sudo apt-get update"
 
   config.vm.provision :file do |file|
-    file.source      = 'shell_provisioning/run.R'
+    file.source      = 'files/run.R'
     file.destination = '/home/vagrant/run.R'
   end
 
@@ -128,9 +128,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.provision "shell", path: "shell_provisioning/install_Rstudio_desktop.sh"
   #LightDM
   #config.vm.provision "shell", path: "shell_provisioning/install_LightDM.sh"
-  #Usefull R packages
-  config.vm.provision "shell", path: "shell_provisioning/R_packages.sh"
-
+  #Useful R packages
+  #config.vm.provision "shell", path: "shell_provisioning/R_packages.sh"
+  #Sublime-Text
+  config.vm.provision "shell", path: "shell_provisioning/sublime-text.sh"
+  #Sublime Packages
+  config.vm.provision :file do |file|
+    file.source      = 'files/Package Control.sublime-settings'
+    file.destination = '/home/vagrant/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings'
+  end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
