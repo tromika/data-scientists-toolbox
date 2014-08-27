@@ -55,7 +55,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #Customize box part
 
-  config.vm.provision "shell", inline: "sudo apt-get update"
+  #config.vm.provision "shell", inline: "sudo apt-get update"
 
   config.vm.provision :file do |file|
     file.source      = 'files/run.R'
@@ -86,7 +86,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
   end
 
-  config.vm.provision "shell", path: "shell_provisioning/add_conda_to_path.sh"
+  #config.vm.provision "shell", path: "shell_provisioning/add_conda_to_path.sh"
 
 
   #RStudio Desktop
@@ -95,12 +95,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell", path: "shell_provisioning/install_LightDM.sh"
   #Useful R packages
   config.vm.provision "shell", path: "shell_provisioning/R_packages.sh"
+  #Sublime Packages
+  config.vm.provision :file do |file|
+    file.source      = 'files/Package Control.sublime-settings'
+    file.destination = '/home/vagrant/Package\ Control.sublime-settings'
+  end
   #Sublime-Text
   config.vm.provision "shell", path: "shell_provisioning/sublime-text.sh"
   #Sublime Packages
   config.vm.provision :file do |file|
     file.source      = 'files/Package Control.sublime-settings'
-    file.destination = '/home/vagrant/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings'
+    file.destination = '/home/vagrant/Package\ Control.sublime-settings'
   end
 
 end
